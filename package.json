@@ -1,0 +1,52 @@
+{
+  "name": "getbasis-integrity",
+  "version": "2.0.1",
+  "main": "index.html",
+  "author": "inc2734",
+  "contributors": [
+    "designhehe"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/getbasis/integrity"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.5.1",
+    "babel-preset-es2015": "^6.18.0",
+    "babelify": "^7.3.0",
+    "browser-sync": "^2.17.5",
+    "browserify": "^13.1.1",
+    "cssnano": "^3.8.0",
+    "gulp": "^3.9.1",
+    "gulp-postcss": "^6.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-stylus": "^2.6.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "getbasis": "^2.0.1",
+    "getbasis-card": "^1.0.1",
+    "getbasis-drawer": "^2.0.1",
+    "getbasis-hamburger-btn": "^1.0.0",
+    "getbasis-layout": "^3.0.0",
+    "getbasis-menu": "^2.0.0"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015"
+          ]
+        }
+      ]
+    ]
+  },
+  "scripts": {
+    "gulp": "gulp",
+    "deploy_gh_pages": "gulp deploy_gh_pages"
+  }
+}

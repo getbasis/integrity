@@ -1,0 +1,24 @@
+@font-face {
+	font-family: "MyYuGothicM";
+	font-weight: normal;
+	src: local("YuGothic-Medium"),
+			 local("Yu Gothic Medium"),
+			 local("YuGothic-Regular");
+}
+@font-face {
+	font-family: "MyYuGothicM";
+	font-weight: bold;
+	src: local("YuGothic-Bold"),
+			 local("Yu Gothic");
+}
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, Helvetica, MyYuGothicM, YuGothic, Meiryo, "Helvetica Neue", sans-serif;
+	letter-spacing: .01em;
+}
+
+a {
+  transition: background-color bs-transition-duration bs-transition-function-timing,
+              color bs-transition-duration bs-transition-function-timing;
+  color: bs-dark(color-accent);
+}
