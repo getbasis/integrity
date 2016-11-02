@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
+set -ex
 
 if [[ "false" != "$TRAVIS_PULL_REQUEST" ]]; then
   echo "Not deploying pull requests."
@@ -17,7 +17,7 @@ cd gh-pages
 ls | xargs rm -rf
 rm -f .gitignore .travis.yml .editorconfig
 cd ../
-npm run deploy
+npm run gulp deploy
 
 cd gh-pages
 

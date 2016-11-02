@@ -46,7 +46,6 @@
     ]
   },
   "scripts": {
-    "gulp": "gulp",
-    "deploy_gh_pages": "gulp deploy_gh_pages"
+    "gulp": "gulp"
   }
 }
