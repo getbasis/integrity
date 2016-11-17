@@ -16,16 +16,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var BasisDrawer = function () {
-  function BasisDrawer(params) {
+  function BasisDrawer() {
     _classCallCheck(this, BasisDrawer);
 
-    this.params = _jquery2.default.extend({
-      container: '._c-drawer',
-      drawer: '._c-drawer__body',
-      btn: '._c-drawer__btn',
-      toggleSubmenu: '._c-drawer__toggle'
-    }, params);
-    this.container = (0, _jquery2.default)(this.params.container);
+    this.setIdForSubmenu();
     this.setListener();
   }
 
@@ -34,14 +28,17 @@ var BasisDrawer = function () {
     value: function setListener() {
       var _this = this;
 
-      this.container.each(function (i, e) {
-        var container = (0, _jquery2.default)(e);
-        var drawer = container.find(_this.params.drawer).eq(0);
-        var btn = container.find(_this.params.btn).eq(0);
+      var btns = (0, _jquery2.default)('[data-c="drawer-btn"][aria-controls]');
+      btns.each(function (i, e) {
+        var btn = (0, _jquery2.default)(e);
+        var drawer = (0, _jquery2.default)(btn.attr('aria-controls'));
+        var container = drawer.parent('[data-c="drawer"]');
 
         container.on('click', function (event) {
-          _this.close(drawer);
-          btn.removeClass('is-close');
+          _this.close(btn);
+          _this.hidden(drawer);
+          _this.close(drawer.find('[data-c="drawer__toggle"]'));
+          _this.hidden(drawer.find('[data-c="drawer__submenu"]'));
         });
 
         drawer.on('click', function (event) {
@@ -50,53 +47,74 @@ var BasisDrawer = function () {
 
         btn.on('click', function (event) {
           event.preventDefault();
-          _this.toggle(drawer);
-          btn.toggleClass('is-close');
+          _this.toggleMenu(btn);
           event.stopPropagation();
         });
 
         (0, _jquery2.default)(window).on('resize', function (event) {
-          _this.close(drawer);
-          btn.removeClass('is-close');
+          _this.hidden(drawer);
+          _this.close(btn);
         });
 
-        var hasSubMenu = drawer.find('[aria-expanded]');
-        hasSubMenu.each(function (i, e) {
-          var target = (0, _jquery2.default)(e);
-          var toggleSubmenu = (0, _jquery2.default)(e).children(_this.params.toggleSubmenu);
-          if (toggleSubmenu.length) {
-            toggleSubmenu.on('click', function (event) {
-              event.preventDefault();
-              event.stopPropagation();
-              _this.toggle(target);
-            });
-          }
+        var toggleBtns = (0, _jquery2.default)('[data-c="drawer__toggle"][aria-controls]');
+        toggleBtns.each(function (i, e) {
+          var toggleBtn = (0, _jquery2.default)(e);
+          var submenu = (0, _jquery2.default)(toggleBtn.attr('aria-controls'));
+          toggleBtn.on('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            _this.toggleMenu(toggleBtn);
+          });
         });
       });
     }
   }, {
-    key: 'toggle',
-    value: function toggle(drawer) {
-      if (drawer.attr('aria-expanded') === 'false') {
-        this.open(drawer);
+    key: 'toggleMenu',
+    value: function toggleMenu(btn) {
+      var menu = (0, _jquery2.default)(btn.attr('aria-controls'));
+      if ('false' == btn.attr('aria-expanded')) {
+        this.open(btn);
+        this.show(menu);
       } else {
-        this.close(drawer);
+        this.close(btn);
+        this.hidden(menu);
+        this.close(menu.find('[data-c="drawer__toggle"]'));
+        this.hidden(menu.find('[data-c="drawer__submenu"]'));
       }
     }
   }, {
     key: 'open',
-    value: function open(drawer) {
-      drawer.attr('aria-expanded', 'true');
+    value: function open(target) {
+      target.attr('aria-expanded', 'true');
     }
   }, {
     key: 'close',
-    value: function close(drawer) {
-      var _this2 = this;
-
-      drawer.attr('aria-expanded', 'false');
-      var hasSubitems = drawer.find('[aria-expanded]');
-      hasSubitems.each(function (i, e) {
-        _this2.close((0, _jquery2.default)(e));
+    value: function close(target) {
+      target.attr('aria-expanded', 'false');
+    }
+  }, {
+    key: 'show',
+    value: function show(target) {
+      target.attr('aria-hidden', 'false');
+    }
+  }, {
+    key: 'hidden',
+    value: function hidden(target) {
+      target.attr('aria-hidden', 'true');
+    }
+  }, {
+    key: 'setIdForSubmenu',
+    value: function setIdForSubmenu() {
+      (0, _jquery2.default)('[data-c="drawer__submenu"][aria-hidden]').each(function (i, e) {
+        var random = Math.floor(Math.random() * (9999999 - 1000000) + 1000000);
+        var time = new Date().getTime();
+        var id = 'drawer-' + time + random;
+        var submenu = (0, _jquery2.default)(e);
+        var toggleBtn = submenu.siblings('[data-c="drawer__toggle"]');
+        if (submenu.length && toggleBtn.length) {
+          submenu.attr('id', id);
+          toggleBtn.attr('aria-controls', '#' + id);
+        }
       });
     }
   }]);
@@ -128,18 +146,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var BasisFixedHeader = function () {
-  function BasisFixedHeader(params) {
+  function BasisFixedHeader() {
     var _this = this;
 
     _classCallCheck(this, BasisFixedHeader);
 
-    this.params = _jquery2.default.extend({
-      container: '._l-container',
-      header: '._l-header'
-    }, params);
-    this.container = (0, _jquery2.default)(this.params.container);
-    this.header = (0, _jquery2.default)(this.params.header);
-    this.isDisableWindowScroll = (0, _jquery2.default)('html').hasClass('_disable-window-scroll');
+    this.container = (0, _jquery2.default)('[data-l="container"]');
+    this.header = (0, _jquery2.default)('[data-l="header"]');
+    this.windowScroll = (0, _jquery2.default)('html').attr('data-window-scroll');
 
     if (this.shouldSetHeaderWidth()) {
       this.setHeaderWidth();
@@ -154,7 +168,7 @@ var BasisFixedHeader = function () {
     key: 'shouldSetHeaderWidth',
     value: function shouldSetHeaderWidth() {
       var position = this.header.css('position');
-      if ('fixed' === position && this.isDisableWindowScroll) {
+      if ('fixed' === position && 'false' == this.windowScroll) {
         return true;
       }
       return false;
@@ -176,8 +190,7 @@ exports.default = BasisFixedHeader;
 
 },{"jquery":5}],3:[function(require,module,exports){
 /**
- * This is for the overlay header.
- * If scroll the page, added a class "is-scrolled".
+ * This is for the sticky header.
  */
 
 'use strict';
@@ -196,27 +209,21 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var BasisOverlayHeader = function () {
-  function BasisOverlayHeader(params) {
-    _classCallCheck(this, BasisOverlayHeader);
+var BasisStickyHeader = function () {
+  function BasisStickyHeader() {
+    _classCallCheck(this, BasisStickyHeader);
 
-    this.params = _jquery2.default.extend({
-      container: '._l-container',
-      header: '._l-header',
-      stickyClass: '_l-header--sticky',
-      overlayClass: '_l-header--overlay',
-      scrollClass: '_l-header--is-scrolled'
-    }, params);
-    this.container = (0, _jquery2.default)(this.params.container);
-    this.header = (0, _jquery2.default)(this.params.header);
-    this.isDisableWindowScroll = (0, _jquery2.default)('html').hasClass('_disable-window-scroll');
+    this.container = (0, _jquery2.default)('[data-l="container"]');
+    this.header = (0, _jquery2.default)('[data-l="header"]');
+    this.contents = (0, _jquery2.default)('[data-l="contents"]');
+    this.windowScroll = (0, _jquery2.default)('html').attr('data-window-scroll');
 
-    this.setClassForScroll();
-    this.setClassForSticky();
+    this.setScroll();
+    this.setSticky();
     this.setListener();
   }
 
-  _createClass(BasisOverlayHeader, [{
+  _createClass(BasisStickyHeader, [{
     key: 'setListener',
     value: function setListener() {
       var _this = this;
@@ -224,43 +231,40 @@ var BasisOverlayHeader = function () {
       var target = this.getScrollTarget();
 
       target.on('scroll resize', function (event) {
-        _this.setClassForScroll();
-        _this.setClassForSticky();
+        _this.setScroll();
+        _this.setSticky();
       });
     }
   }, {
-    key: 'setClassForScroll',
-    value: function setClassForScroll() {
+    key: 'setScroll',
+    value: function setScroll() {
       var scroll = this.getScrollTop();
 
       if (scroll > 0) {
-        this.header.addClass(this.params.scrollClass);
+        (0, _jquery2.default)('html').attr('data-scrolled', 'true');
       } else {
-        this.header.removeClass(this.params.scrollClass);
+        (0, _jquery2.default)('html').attr('data-scrolled', 'false');
       }
     }
   }, {
-    key: 'setClassForSticky',
-    value: function setClassForSticky() {
-      var scroll = this.getScrollTop();
+    key: 'setSticky',
+    value: function setSticky() {
+      if ('sticky' !== this.header.attr('data-l-header-type')) {
+        return;
+      }
 
-      if (this.header.hasClass(this.params.stickyClass)) {
+      var scroll = this.getScrollTop();
+      if (scroll > 0) {
         var headerHeight = this.header.outerHeight();
-        if (scroll > 0) {
-          this.header.next().css('paddingTop', headerHeight + 'px');
-          this.header.addClass(this.params.overlayClass);
-        } else {
-          this.header.next().css('paddingTop', '');
-          this.header.removeClass(this.params.overlayClass);
-        }
+        this.contents.css('paddingTop', headerHeight + 'px');
       } else {
-        this.header.next().css('paddingTop', '');
+        this.contents.css('paddingTop', '');
       }
     }
   }, {
     key: 'getScrollTarget',
     value: function getScrollTarget() {
-      if (this.isDisableWindowScroll) {
+      if ('false' == this.windowScroll) {
         return this.container;
       } else {
         return (0, _jquery2.default)(window);
@@ -269,15 +273,14 @@ var BasisOverlayHeader = function () {
   }, {
     key: 'getScrollTop',
     value: function getScrollTop() {
-      var target = this.getScrollTarget();
-      return target.scrollTop();
+      return this.getScrollTarget().scrollTop();
     }
   }]);
 
-  return BasisOverlayHeader;
+  return BasisStickyHeader;
 }();
 
-exports.default = BasisOverlayHeader;
+exports.default = BasisStickyHeader;
 
 },{"jquery":5}],4:[function(require,module,exports){
 'use strict';
@@ -297,14 +300,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var BasisMenu = function () {
-  function BasisMenu(params) {
+  function BasisMenu() {
     _classCallCheck(this, BasisMenu);
 
-    this.params = _jquery2.default.extend({
-      container: '._c-menu'
-    }, params);
-
-    this.container = (0, _jquery2.default)(this.params.container);
+    this.container = (0, _jquery2.default)('[data-c="menu"]');
     this.setListener();
   }
 
@@ -313,32 +312,29 @@ var BasisMenu = function () {
     value: function setListener() {
       var _this = this;
 
-      this.container.each(function (i, e) {
-        var container = (0, _jquery2.default)(e);
+      this.container.find('[aria-haspopup="true"]').each(function (i, e) {
+        var item = (0, _jquery2.default)(e);
 
-        var hasSubmenus = container.find('[aria-expanded]');
-        hasSubmenus.each(function (i, e) {
-          var item = (0, _jquery2.default)(e);
+        item.on('mouseover focus', function (event) {
+          var submenu = item.children('[data-c="menu__submenu"]');
+          _this.show(submenu);
+        });
 
-          item.on('mouseover', function (event) {
-            _this.open(item);
-          }, false);
-
-          item.on('mouseleave', function (event) {
-            _this.close(item);
-          }, false);
+        item.on('mouseleave', function (event) {
+          var submenu = item.children('[data-c="menu__submenu"]');
+          _this.hidden(submenu);
         });
       });
     }
   }, {
-    key: 'open',
-    value: function open(item) {
-      item.attr('aria-expanded', 'true');
+    key: 'show',
+    value: function show(submenu) {
+      submenu.attr('aria-hidden', 'false');
     }
   }, {
-    key: 'close',
-    value: function close(item) {
-      item.attr('aria-expanded', 'false');
+    key: 'hidden',
+    value: function hidden(submenu) {
+      submenu.attr('aria-hidden', 'true');
     }
   }]);
 
@@ -10584,9 +10580,9 @@ var _fixedHeader = require('../../node_modules/getbasis-layout/src/js/fixed-head
 
 var _fixedHeader2 = _interopRequireDefault(_fixedHeader);
 
-var _overlayHeader = require('../../node_modules/getbasis-layout/src/js/overlay-header.js');
+var _stickyHeader = require('../../node_modules/getbasis-layout/src/js/sticky-header.js');
 
-var _overlayHeader2 = _interopRequireDefault(_overlayHeader);
+var _stickyHeader2 = _interopRequireDefault(_stickyHeader);
 
 var _menu = require('../../node_modules/getbasis-menu/src/js/menu.js');
 
@@ -10596,14 +10592,9 @@ function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
 }
 
-new _drawer2.default({
-  container: '.p-drawer-nav',
-  drawer: '.p-drawer-nav__body',
-  btn: '.p-drawer-nav__btn',
-  toggleSubmenu: '.p-drawer-nav__toggle'
-});
+new _drawer2.default();
 new _fixedHeader2.default();
-new _overlayHeader2.default();
+new _stickyHeader2.default();
 new _menu2.default();
 
-},{"../../node_modules/getbasis-drawer/src/js/drawer.js":1,"../../node_modules/getbasis-layout/src/js/fixed-header.js":2,"../../node_modules/getbasis-layout/src/js/overlay-header.js":3,"../../node_modules/getbasis-menu/src/js/menu.js":4,"jquery":5}]},{},[6]);
+},{"../../node_modules/getbasis-drawer/src/js/drawer.js":1,"../../node_modules/getbasis-layout/src/js/fixed-header.js":2,"../../node_modules/getbasis-layout/src/js/sticky-header.js":3,"../../node_modules/getbasis-menu/src/js/menu.js":4,"jquery":5}]},{},[6]);
