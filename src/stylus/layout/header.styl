@@ -35,7 +35,7 @@
     }
   }
 
-  &--is-scrolled {
+  html[data-scrolled="true"] & {
     background-color: rgba(#fff, .8);
     box-shadow: 1px 0 3px rgba(bs-color-black, .1);
 
@@ -49,8 +49,14 @@
       }
     }
 
-    .{bs-prefix}c-hamburger-btn__bar {
-      background-color: bs-color-text;
+    .{bs-prefix}c-hamburger-btn {
+      &__bar {
+        background-color: bs-color-text;
+      }
+
+      &[aria-expanded="true"] .{bs-prefix}c-hamburger-btn__bar:nth-child(2) {
+        display: none;
+      }
     }
   }
 }
