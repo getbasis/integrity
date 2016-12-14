@@ -16,8 +16,8 @@ git clone -b gh-pages --quiet https://github.com/getbasis/integrity.git gh-pages
 cd gh-pages
 ls | xargs rm -rf
 rm -f .gitignore .travis.yml .editorconfig
-cp ../**.html .
-cp -R ../assets .
+cp ../public/**.html .
+cp -R ../public/assets .
 ls -la
 
 git add -A

@@ -21,7 +21,7 @@ install:
 - npm install
 script:
 - npm run gulp build
-- ls -la assets
+- ls -la public
 after_success:
 - bash ./bin/gh-pages.sh
 before_deploy:
