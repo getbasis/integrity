@@ -127,14 +127,17 @@ gulp.task('browsersync', function() {
 /**
  * Creates the zip file
  */
-gulp.task('zip', function(){
+gulp.task('zip', ['build'], function(){
   return gulp.src(
       [
         '**',
         '!./.git',
+        '!./.git/**',
         '!./.travis.yml',
         '!./node_modules',
-        '!./bin'
+        '!./node_modules/**',
+        '!./bin',
+        '!./bin/**'
       ]
       , {base: '.'}
     )
