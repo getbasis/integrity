@@ -131,13 +131,14 @@ gulp.task('zip', ['build'], function(){
   return gulp.src(
       [
         '**',
-        '!./.git',
-        '!./.git/**',
+        '.gitignore',
+        '.editorconfig',
         '!./.travis.yml',
         '!./node_modules',
         '!./node_modules/**',
         '!./bin',
-        '!./bin/**'
+        '!./bin/**',
+        '!integrity.zip'
       ]
       , {base: '.'}
     )
