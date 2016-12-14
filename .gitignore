@@ -1,6 +1,6 @@
 node_modules/
 .DS_Store
-assets/
 gh-pages/
 integrity.zip
+public/
 *.log

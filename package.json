@@ -17,6 +17,7 @@
     "browser-sync": "^2.18.5",
     "cssnano": "^3.9.1",
     "gulp": "^3.9.1",
+    "gulp-ejs": "^2.3.0",
     "gulp-postcss": "^6.2.0",
     "gulp-rename": "^1.2.2",
     "gulp-rollup": "^2.5.1",
@@ -30,7 +31,8 @@
   },
   "dependencies": {
     "getbasis": "^4.2.0",
-    "getbasis-layout": "^6.0.1"
+    "getbasis-layout": "^6.0.1",
+    "getbasis-margin-between-children": "^1.0.0"
   },
   "scripts": {
     "gulp": "gulp"

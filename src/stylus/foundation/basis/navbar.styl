@@ -5,9 +5,20 @@
     }
   }
 
+  &__submenu {
+    background-color: rgba(_color-black, .8);
+  }
+
   &__subitem {
+    _font-size-line-height(_base-font-size-px - 2);
+
     > a {
+      color: #fff;
       _padding(.25, .5);
+
+      +_hover() {
+        background-color: rgba(#fff, .05);
+      }
     }
   }
 }

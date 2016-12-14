@@ -7,4 +7,54 @@
   +_hover() {
     background-color: color-main;
   }
+
+  &--ghost {
+    border-color: #fff;
+    color: #fff;
+  }
+
+  &--primary {
+    border-color: color-primary;
+    color: color-primary;
+
+    +_hover() {
+      background-color: _light(color-primary);
+    }
+  }
+
+  &--success {
+    border-color: color-success;
+    color: color-success;
+
+    +_hover() {
+      background-color: _light(color-success);
+    }
+  }
+
+  &--info {
+    border-color: color-info;
+    color: color-info;
+
+    +_hover() {
+      background-color: _light(color-info);
+    }
+  }
+
+  &--warning {
+    border-color: color-warning;
+    color: color-warning;
+
+    +_hover() {
+      background-color: _lightest(color-warning);
+    }
+  }
+
+  &--danger {
+    border-color: color-danger;
+    color: color-danger;
+
+    +_hover() {
+      background-color: _lightest(color-danger);
+    }
+  }
 }

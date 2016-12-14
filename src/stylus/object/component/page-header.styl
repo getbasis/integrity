@@ -1,0 +1,18 @@
+.c-page-header {
+  text-align: center;
+  _padding(3, 0);
+  _background-image-cover();
+  _overlay(color-accent);
+  position: relative;
+
+  &::before {
+    opacity: .8;
+  }
+
+  &__title {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+    _font-size-line-height(_base-font-size-px * 2);
+  }
+}

@@ -13,7 +13,7 @@
 }
 
 body {
-	font-family: -apple-system, BlinkMacSystemFont, Helvetica, MyYuGothicM, YuGothic, Meiryo, "Helvetica Neue", sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, Helvetica, Meiryo, MyYuGothicM, YuGothic, "Helvetica Neue", sans-serif;
 	letter-spacing: .01em;
 }
 
@@ -21,4 +21,10 @@ a {
   transition: background-color _transition-duration _transition-function-timing,
               color _transition-duration _transition-function-timing;
   color: _dark(color-accent);
+}
+
+@import '../../../node_modules/getbasis-margin-between-children/src/stylus/foundation/foundation';
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 0;
 }
