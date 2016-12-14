@@ -68,8 +68,7 @@ gulp.task('js', function() {
 gulp.task('css', function() {
   return gulp.src(
       [
-        dir.src.css + '/basis.styl',
-        dir.src.css + '/plugin/basis-ie9/basis-ie9.styl'
+        dir.src.css + '/style.styl',
       ],
       {base: dir.src.css}
     )

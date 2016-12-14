@@ -1,11 +1,8 @@
-.p-entry-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.c-entries {
+  _list-unstyled();
 
   &__item {
-    bs-margin(1, 0, 0);
-    padding: 0;
+    _margin(1, 0, 0);
 
     &:first-child {
       margin-top: 0;
@@ -17,7 +14,7 @@
     font-weight: bold;
   }
 
-  .{bs-prefix}c-media {
+  .{_prefix}c-media {
     &__figure {
       max-width: 25%;
     }
