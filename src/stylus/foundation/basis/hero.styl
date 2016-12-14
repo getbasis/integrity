@@ -1,8 +1,4 @@
 .{_prefix}c-hero {
-  &, a {
-    color: #fff;
-  }
-
   &:before {
     background-color: rgba(#000, .3);
   }
@@ -10,15 +6,26 @@
   .{bs-prefix}c-hero__header {
     bs-padding(.5, 0, 0);
   }
+}
 
-  .{bs-prefix}c-hero__content {
-    text-align: center;
-  }
+.p-main-visual-content {
+  text-align: center;
 
   &__title {
     bs-margin(0, 0, .5);
     display: inline-block;
-    bs-padding(0, 0, .5);
     border-bottom: 1px solid #fff;
+    color: #fff;
+    bs-padding(0, 0, .5);
+  }
+
+  &__content {
+    &, a {
+      color: #fff;
+    }
+  }
+
+  &__action {
+    _margin-top(1);
   }
 }
