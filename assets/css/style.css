@@ -1,5 +1,5 @@
 /*
- * Name: Basis v4.2.0
+ * Name: Basis v4.2.1
  * Description: The flexbox based CSS framework.
  * Author: Takashi Kitajima ( inc2734 )
  * Author URL: http://2inc.org
@@ -254,23 +254,23 @@ h6 {
   font-weight: bold;
 }
 h1 {
-  font-size: 48px;
-  font-size: 3rem;
-  line-height: 1.1875;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.75;
   margin-top: 0;
   margin-bottom: 1.75rem;
 }
 h2 {
-  font-size: 40px;
-  font-size: 2.5rem;
-  line-height: 1.3;
+  font-size: 32px;
+  font-size: 2rem;
+  line-height: 1.28125;
   margin-top: 3.5rem;
   margin-bottom: 1.75rem;
 }
 h3 {
-  font-size: 32px;
-  font-size: 2rem;
-  line-height: 1.28125;
+  font-size: 28px;
+  font-size: 1.75rem;
+  line-height: 1.428571428571429;
   margin-top: 3.5rem;
   margin-bottom: 1.75rem;
 }
@@ -282,16 +282,16 @@ h4 {
   margin-bottom: 1.75rem;
 }
 h5 {
-  font-size: 16px;
-  font-size: 1rem;
-  line-height: 1.75;
+  font-size: 20px;
+  font-size: 1.25rem;
+  line-height: 1.6;
   margin-top: 1.75rem;
   margin-bottom: 0.875rem;
 }
 h6 {
-  font-size: 16px;
-  font-size: 1rem;
-  line-height: 1.75;
+  font-size: 20px;
+  font-size: 1.25rem;
+  line-height: 1.6;
   margin-top: 1.75rem;
   margin-bottom: 0.875rem;
 }
@@ -1116,6 +1116,7 @@ textarea._c-input-group__field > input[type='url'] {
   padding: 0.4375rem 1.75rem 0.4375rem 0.875rem;
 }
 ._c-spinner-circle {
+  display: inline-block;
   border-radius: 100%;
   height: 20px;
   width: 20px;
@@ -3150,6 +3151,12 @@ a {
   transition: background-color 0.1s ease-out, color 0.1s ease-out;
   color: #3a7777;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
 .blockquote,
 dl,
 ol,
@@ -3159,14 +3166,35 @@ table,
 ul {
   margin-bottom: 0;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+blockquote > * + * {
+  margin-top: 0.875rem;
+}
+blockquote > h1 {
   margin-top: 0;
-  margin-bottom: 0;
+  margin-bottom: 0.875rem;
+}
+blockquote > h2 {
+  margin-top: 1.75rem;
+  margin-bottom: 0.875rem;
+}
+blockquote > h3 {
+  margin-top: 1.75rem;
+  margin-bottom: 0.875rem;
+}
+blockquote > h4 {
+  margin-top: 1.75rem;
+  margin-bottom: 0.875rem;
+}
+blockquote > h5 {
+  margin-top: 0.875rem;
+  margin-bottom: 0.4375rem;
+}
+blockquote > h6 {
+  margin-top: 0.875rem;
+  margin-bottom: 0.4375rem;
+}
+blockquote > :first-child {
+  margin-top: 0;
 }
 ._c-alert {
   border-color: #9ed0d0;
@@ -3256,23 +3284,6 @@ h6 {
 }
 ._c-hero ._c-hero__header {
   padding: 0.875rem 0 0;
-}
-.p-main-visual-content {
-  text-align: center;
-}
-.p-main-visual-content__title {
-  margin: 0 0 0.875rem;
-  display: inline-block;
-  border-bottom: 1px solid #fff;
-  color: #fff;
-  padding: 0 0 0.875rem;
-}
-.p-main-visual-content__content,
-.p-main-visual-content__content a {
-  color: #fff;
-}
-.p-main-visual-content__action {
-  margin-top: 1.75rem;
 }
 ._c-navbar__item > a {
   padding: 1.3125rem 0.875rem;
@@ -3415,6 +3426,18 @@ html[data-scrolled="false"] ._l-header[data-l-header-type="overlay"] ._c-hamburg
 .c-entries ._c-media__figure {
   max-width: 25%;
 }
+.c-entry__header {
+  margin: 0 0 3.5rem;
+}
+.c-entry__title {
+  font-size: 32px;
+  font-size: 2rem;
+  line-height: 1.28125;
+}
+.c-entry__meta {
+  margin: 0.875rem 0 0;
+  color: #999;
+}
 .c-entry__content > * + * {
   margin-top: 1.75rem;
 }
@@ -3442,6 +3465,9 @@ html[data-scrolled="false"] ._l-header[data-l-header-type="overlay"] ._c-hamburg
   margin-top: 1.75rem;
   margin-bottom: 0.875rem;
 }
+.c-entry__content > :first-child {
+  margin-top: 0;
+}
 .c-page-header {
   text-align: center;
   padding: 5.25rem 0;
@@ -3458,10 +3484,7 @@ html[data-scrolled="false"] ._l-header[data-l-header-type="overlay"] ._c-hamburg
   bottom: 0;
   left: 0;
   content: '';
-  background-color: #9ed0d0;
-}
-.c-page-header::before {
-  opacity: 0.8;
+  background-color: rgba(158,208,208,0.8);
 }
 .c-page-header__title {
   position: relative;
@@ -3471,11 +3494,39 @@ html[data-scrolled="false"] ._l-header[data-l-header-type="overlay"] ._c-hamburg
   font-size: 2rem;
   line-height: 1.28125;
 }
+.c-pagination {
+  text-align: center;
+}
+.c-pagination__item {
+  display: inline-block;
+  font-size: 14px;
+  font-size: 0.875rem;
+  line-height: 1;
+  padding: 8px 10px;
+  text-decoration: none;
+  background-color: #eee;
+  color: #999;
+}
+.c-pagination [aria-current="true"] {
+  background-color: #666;
+  color: #fff;
+}
+.c-pagination a.c-pagination__item {
+  transition: all 0.1s ease-out;
+}
+.c-pagination a.c-pagination__item:hover,
+.c-pagination a.c-pagination__item:focus {
+  background-color: #666;
+  color: #fff;
+}
 .c-section {
   padding: 5.25rem 0;
 }
 .c-section--bg {
   background-color: #f3f8f8;
+}
+.c-section--bt {
+  border-top: 1px solid #eee;
 }
 .c-section__title {
   margin: 0 0 3.5rem;
@@ -3511,6 +3562,9 @@ html[data-scrolled="false"] ._l-header[data-l-header-type="overlay"] ._c-hamburg
   margin-top: 1.75rem;
   margin-bottom: 0.875rem;
 }
+.c-section__content > :first-child {
+  margin-top: 0;
+}
 .c-site-branding__title {
   margin: 0;
   font-size: 32px;
@@ -3537,6 +3591,26 @@ html[data-scrolled="false"] ._l-header[data-l-header-type="overlay"] ._c-hamburg
   font-size: 14px;
   font-size: 0.875rem;
   line-height: 1.857142857142857;
+}
+.p-main-visual {
+  text-align: center;
+}
+.p-main-visual__title {
+  margin: 0 0 0.875rem;
+  display: inline-block;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+  font-size: 32px;
+  font-size: 2rem;
+  line-height: 1.28125;
+  padding: 0 0 0.875rem;
+}
+.p-main-visual__content,
+.p-main-visual__content a {
+  color: #fff;
+}
+.p-main-visual__action {
+  margin-top: 1.75rem;
 }
 .p-vertical-media {
   background-color: transparent;
