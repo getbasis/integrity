@@ -6,16 +6,31 @@ branches:
   only:
   - master
   - develop
+  - "/v\\d+\\.\\d+\\.\\d+?.*/"
 env:
   global:
   - GIT_COMMITTER_NAME=travis-ci
   - GIT_COMMITTER_EMAIL=inc@2inc.org
   - GIT_AUTHOR_NAME=travis-ci
   - GIT_AUTHOR_EMAIL=inc@2inc.org
-  - secure: "hYCrLgaMQyKj6+vrkMzfbk+MrCn+HUmI8s/CacXa6www1p5r0kqAaU+asZ8X2FTHpVbWoFiMY5W2KEjKTbkru7Bw9BKItlKQJ7KG9xuRZNeMmVkN1e8zHuWyluCZovD6FCcrtgJd2fhSgNyain1xDsE0Rs3EL/utU/tRo2G8lseI5IEet7Vb6ah5Yn3AK+iEAIE3uCqNZgxwRVHgi4VeGCPpzbNO9mE4mtl+ytM0mEPiVNR4hyTkM8RF8QLUzxGA4OaPJ+oORq6wQTOx7iJTfpttw4qODwzBrYowKAnMlYJ4JbjiZZegItJcM2JsE7BZxjvjLTINAQZ1DXJwTPRSPQt9oRghJfKJjJ88YcIgdsOde0KjRkMkCmB1qMPbcjrn2RQWOURf/VRjDITYi1jb+G+V4ioQoRPeLqC225QGk0OBrfGmInW7QoLYvdowLG1e/qnmW3okJMHZU2JVfjBjgJS5NayxKwv2Mk7i1Th8bMAT/NVQ4RKsdI5G6GJmsWqYjqOi4vFStkru45Lw0ZSAJnv7EEoc16yf/+VX85TY7TD0hvkUW6LSU5yXfWX3mwrsRLinnEjbTtIceIxuvcDQo5vaTgIJC+QF1ICIHQQGCwnOZ9pkq0g6cr21ZdmYxJj5HDKdHoiyCpuvDhY11LE2pPibO1fcBvf2QDhPx5pnvcA="
+  - secure: hYCrLgaMQyKj6+vrkMzfbk+MrCn+HUmI8s/CacXa6www1p5r0kqAaU+asZ8X2FTHpVbWoFiMY5W2KEjKTbkru7Bw9BKItlKQJ7KG9xuRZNeMmVkN1e8zHuWyluCZovD6FCcrtgJd2fhSgNyain1xDsE0Rs3EL/utU/tRo2G8lseI5IEet7Vb6ah5Yn3AK+iEAIE3uCqNZgxwRVHgi4VeGCPpzbNO9mE4mtl+ytM0mEPiVNR4hyTkM8RF8QLUzxGA4OaPJ+oORq6wQTOx7iJTfpttw4qODwzBrYowKAnMlYJ4JbjiZZegItJcM2JsE7BZxjvjLTINAQZ1DXJwTPRSPQt9oRghJfKJjJ88YcIgdsOde0KjRkMkCmB1qMPbcjrn2RQWOURf/VRjDITYi1jb+G+V4ioQoRPeLqC225QGk0OBrfGmInW7QoLYvdowLG1e/qnmW3okJMHZU2JVfjBjgJS5NayxKwv2Mk7i1Th8bMAT/NVQ4RKsdI5G6GJmsWqYjqOi4vFStkru45Lw0ZSAJnv7EEoc16yf/+VX85TY7TD0hvkUW6LSU5yXfWX3mwrsRLinnEjbTtIceIxuvcDQo5vaTgIJC+QF1ICIHQQGCwnOZ9pkq0g6cr21ZdmYxJj5HDKdHoiyCpuvDhY11LE2pPibO1fcBvf2QDhPx5pnvcA=
+cache:
+  directories:
+  - node_modules
+  - ls -la assets
 install:
 - npm install
 script:
 - npm run gulp build
 after_success:
-- bash ./bin/deploy.sh
+- bash ./bin/gh-pages.sh
+before_deploy:
+- bash ./bin/zip.sh
+deploy:
+  provider: releases
+  api_key:
+    secure: CbXuFCu4AhpougnL0hob7y4CE3+qKIoOw7sc5KrJiLPCtUNBRFJAvtf+GdQxDQF5qfWNsaainerQ+WX9DSVwhs/D1yzBbHmRr+l5ftpKTQcwyaJQECeFwbfVAiwc/c4+2JxR8QCZdtx9WihLtA5fJB758cly+Q4R1PKawCt5PqiWc1m/HQsfzkHRmjjD0pLGKJR39D0DzaRnGibzNxzAJSXfjqPSUzqEAFSiLbF5IMmjwkqVq428QGeiNAtbEU7jtkbLCTP3bIfoZV3dJzLMbjXzxwGPVb34TgSEvuZvwmqQO6wZe5HYLg92U2KMSaR3nwxL4lgDD4PgK9CWwKYpIYOYVrd0mMx2WpdOSOAovcdESCFngu0VWY/qzAexOTNWe+DZ/sVSYi1BdROwevw9MRMJQ8G3THvw4WXiHQ3B70xsDTGYHzoa4Y+trv2Pwwwe/rWJor7TQSUrNNGigHsGKC730o6LgwJ7gXjPSwNn5+2g5pjFvoIYBVH/32ghIw0WzloF9pDXPryYwurQ8/mISoiJFJviuAi2q5lvLGokScHk28MY3LEyI1sZ6SljJJPt5PfzNKWyNfr43+KqWUuGH3YkDbUomEmDjkq8EhR3Dc+X4hOqb1fEviwIRqkaKmZVs3I8GVb8pyuC/ECFeAlRFnWEK8jMU3Br95KQTa1aTgs=
+  file: integrity.zip
+  on:
+    tags: true
+    repo: getbasis/integrity

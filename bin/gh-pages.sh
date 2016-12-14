@@ -16,10 +16,9 @@ git clone -b gh-pages --quiet https://github.com/getbasis/integrity.git gh-pages
 cd gh-pages
 ls | xargs rm -rf
 rm -f .gitignore .travis.yml .editorconfig
-cd ../
-npm run gulp deploy
-
-cd gh-pages
+cp ../**.html .
+cp -R ../assets .
+ls -la
 
 git add -A
 git commit -m "[ci skip] gh-pages branch update from travis $TRAVIS_COMMIT"
