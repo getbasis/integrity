@@ -17,11 +17,11 @@ env:
 cache:
   directories:
   - node_modules
-  - ls -la assets
 install:
 - npm install
 script:
 - npm run gulp build
+- ls -la assets
 after_success:
 - bash ./bin/gh-pages.sh
 before_deploy:
