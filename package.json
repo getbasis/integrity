@@ -12,22 +12,24 @@
     "url": "https://github.com/getbasis/integrity"
   },
   "devDependencies": {
-    "autoprefixer": "^6.5.3",
-    "browser-sync": "^2.18.1",
-    "cssnano": "^3.8.0",
+    "autoprefixer": "^6.5.4",
+    "babel-preset-es2015-rollup": "^3.0.0",
+    "browser-sync": "^2.18.5",
+    "cssnano": "^3.9.1",
     "gulp": "^3.9.1",
     "gulp-postcss": "^6.2.0",
     "gulp-rename": "^1.2.2",
+    "gulp-rollup": "^2.5.1",
     "gulp-stylus": "^2.6.0",
     "gulp-uglify": "^2.0.0",
-    "gulp-rollup": "^2.5.1",
-    "babel-preset-es2015-rollup": "^3.0.0",
+    "gulp-zip": "^3.2.0",
+    "rimraf": "^2.5.4",
     "rollup-plugin-babel": "^2.7.1",
     "rollup-plugin-commonjs": "^5.0.5",
     "rollup-plugin-node-resolve": "^2.0.0"
   },
   "dependencies": {
-    "getbasis": "^2.0.1",
+    "getbasis": "^4.2.0",
     "getbasis-layout": "^6.0.1"
   },
   "scripts": {

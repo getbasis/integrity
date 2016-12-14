@@ -38,7 +38,7 @@ gulp.task('js', function() {
   gulp.src(dir.src.js + '/**/*.js')
     .pipe(rollup({
       allowRealFiles: true,
-      entry: dir.src.js + '/basis.js',
+      entry: dir.src.js + '/app.js',
       format: 'iife',
       external: ['jquery'],
       globals: {
@@ -55,7 +55,7 @@ gulp.task('js', function() {
     }))
     .pipe(gulp.dest(dir.dist.js))
     .on('end', function() {
-      gulp.src([dir.dist.js + '/basis.js'])
+      gulp.src([dir.dist.js + '/app.js'])
         .pipe(uglify())
         .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest(dir.dist.js));

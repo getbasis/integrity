@@ -25,7 +25,7 @@ script:
 after_success:
 - bash ./bin/gh-pages.sh
 before_deploy:
-- bash ./bin/zip.sh
+- npm run gulp zip
 deploy:
   provider: releases
   api_key:
