@@ -1,9 +1,16 @@
 # integrity
-The integrity is a responsive HTML5 + CSS3 template using the Basis css framework.
+The integrity is a responsive HTML5 + CSS3 template using the Basis.
 
 ## Basis
 * Repository: https://github.com/getbasis/basis/
 * Documents : http://getbasis.github.io/
+
+## Get started
+Just this links in head.
+```
+<link rel="stylesheet" href="/PATH/TO/assets/css/style.min.css">
+<script src="/PATH/TO/assets/js/app.min.js"></script>
+```
 
 ## Browser support
 Modern Browser and IE10+
