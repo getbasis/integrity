@@ -1,20 +1,20 @@
 @font-face {
-	font-family: "MyYuGothicM";
-	font-weight: normal;
-	src: local("YuGothic-Medium"),
-			 local("Yu Gothic Medium"),
-			 local("YuGothic-Regular");
+  font-family: "MyYuGothicM";
+  font-weight: normal;
+  src: local("YuGothic-Medium"),
+       local("Yu Gothic Medium"),
+       local("YuGothic-Regular");
 }
 @font-face {
-	font-family: "MyYuGothicM";
-	font-weight: bold;
-	src: local("YuGothic-Bold"),
-			 local("Yu Gothic");
+  font-family: "MyYuGothicM";
+  font-weight: bold;
+  src: local("YuGothic-Bold"),
+       local("Yu Gothic");
 }
 
 body {
-	font-family: -apple-system, BlinkMacSystemFont, Helvetica, Meiryo, MyYuGothicM, YuGothic, "Helvetica Neue", sans-serif;
-	letter-spacing: .01em;
+  font-family: -apple-system, BlinkMacSystemFont, Helvetica, Meiryo, MyYuGothicM, YuGothic, "Helvetica Neue", sans-serif;
+  letter-spacing: .01em;
 }
 
 a {
@@ -24,7 +24,7 @@ a {
 }
 
 @import '../../../node_modules/getbasis-margin-between-children/src/stylus/foundation/foundation';
-h1, h2, h3, h4, h5, h6 {
-  margin-top: 0;
-  margin-bottom: 0;
+
+blockquote {
+  _margin-between-children(.5);
 }

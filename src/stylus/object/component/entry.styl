@@ -1,4 +1,17 @@
 .c-entry {
+  &__header {
+    _margin(0, 0, 2);
+  }
+
+  &__title {
+    _font-size-line-height(_base-font-size-px * _h2-font-size-scale);
+  }
+
+  &__meta {
+    _margin(.5, 0, 0);
+    color: _color-gray;
+  }
+
   &__content {
     _margin-between-children(1);
   }
