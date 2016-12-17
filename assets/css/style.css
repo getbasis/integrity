@@ -1,5 +1,5 @@
 /*
- * Name: Basis v4.3.0
+ * Name: Basis v4.3.1
  * Description: The flexbox based CSS framework.
  * Author: Takashi Kitajima ( inc2734 )
  * Author URL: http://2inc.org
@@ -242,8 +242,10 @@ dl,
 table,
 pre,
 blockquote {
-  margin-top: 0;
-  margin-bottom: 1.75rem;
+  margin: 0 0 1.75rem;
+}
+figure {
+  margin: 0 0 1.75rem;
 }
 h1,
 h2,
@@ -271,14 +273,14 @@ h3 {
   font-size: 28px;
   font-size: 1.75rem;
   line-height: 1.428571428571429;
-  margin-top: 3.5rem;
+  margin-top: 2.625rem;
   margin-bottom: 1.75rem;
 }
 h4 {
   font-size: 24px;
   font-size: 1.5rem;
   line-height: 1.5;
-  margin-top: 3.5rem;
+  margin-top: 2.1875rem;
   margin-bottom: 1.75rem;
 }
 h5 {
@@ -3210,7 +3212,9 @@ ol,
 p,
 pre,
 table,
-ul {
+ul,
+figure {
+  margin-top: 0;
   margin-bottom: 0;
 }
 blockquote > * + * {
@@ -3225,11 +3229,11 @@ blockquote > h2 {
   margin-bottom: 0.875rem;
 }
 blockquote > h3 {
-  margin-top: 1.75rem;
+  margin-top: 1.3125rem;
   margin-bottom: 0.875rem;
 }
 blockquote > h4 {
-  margin-top: 1.75rem;
+  margin-top: 1.09375rem;
   margin-bottom: 0.875rem;
 }
 blockquote > h5 {
@@ -3391,11 +3395,11 @@ blockquote > :first-child {
   margin-bottom: 1.75rem;
 }
 ._c-entry__content > h3 {
-  margin-top: 3.5rem;
+  margin-top: 2.625rem;
   margin-bottom: 1.75rem;
 }
 ._c-entry__content > h4 {
-  margin-top: 3.5rem;
+  margin-top: 2.1875rem;
   margin-bottom: 1.75rem;
 }
 ._c-entry__content > h5 {
@@ -3500,11 +3504,11 @@ blockquote > :first-child {
   margin-bottom: 1.75rem;
 }
 ._c-section__content > h3 {
-  margin-top: 3.5rem;
+  margin-top: 2.625rem;
   margin-bottom: 1.75rem;
 }
 ._c-section__content > h4 {
-  margin-top: 3.5rem;
+  margin-top: 2.1875rem;
   margin-bottom: 1.75rem;
 }
 ._c-section__content > h5 {
