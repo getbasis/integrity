@@ -1,6 +1,6 @@
 {
   "name": "getbasis-integrity",
-  "version": "4.3.0",
+  "version": "4.3.1",
   "author": "inc2734",
   "contributors": [
     "designhehe"
@@ -25,13 +25,13 @@
     "gulp-zip": "^3.2.0",
     "rimraf": "^2.5.4",
     "rollup-plugin-babel": "^2.7.1",
-    "rollup-plugin-commonjs": "^5.0.5",
+    "rollup-plugin-commonjs": "^6.0.0",
     "rollup-plugin-node-resolve": "^2.0.0"
   },
   "dependencies": {
-    "getbasis": "^4.3.0",
+    "getbasis": "^4.3.1",
     "getbasis-layout": "^6.0.1",
-    "getbasis-margin-between-children": "^1.0.2"
+    "getbasis-margin-between-children": "^1.0.3"
   },
   "scripts": {
     "gulp": "gulp"
