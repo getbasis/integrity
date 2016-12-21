@@ -271,27 +271,17 @@ var BasisPageEffect = function () {
           event.preventDefault();
           _this.show();
           var url = link.attr('href');
-          _this.location(url);
+          _this.moveLocation(url);
         });
       });
     }
   }, {
-    key: 'location',
-    value: function (_location) {
-      function location(_x) {
-        return _location.apply(this, arguments);
-      }
-
-      location.toString = function () {
-        return _location.toString();
-      };
-
-      return location;
-    }(function (url) {
+    key: 'moveLocation',
+    value: function moveLocation(url) {
       setTimeout(function () {
         location.href = url;
       }, this.params['duration']);
-    })
+    }
   }, {
     key: 'hide',
     value: function hide() {
