@@ -18,6 +18,7 @@ var nodeResolve  = require('rollup-plugin-node-resolve');
 var commonjs     = require('rollup-plugin-commonjs');
 var babel        = require('rollup-plugin-babel');
 var ejs          = require('gulp-ejs');
+var plumber      = require('gulp-plumber');
 
 var dir = {
   src: {
@@ -39,6 +40,7 @@ var dir = {
  */
 gulp.task('js', function() {
   gulp.src(dir.src.js + '/**/*.js')
+    .pipe(plumber())
     .pipe(rollup({
       allowRealFiles: true,
       entry: dir.src.js + '/app.js',
@@ -75,6 +77,7 @@ gulp.task('css', function() {
       ],
       {base: dir.src.css}
     )
+    .pipe(plumber())
     .pipe(stylus({
       'resolve url nocheck': true
     }))
@@ -110,6 +113,7 @@ gulp.task('ejs', function() {
     dir.src.ejs + '/**/*.ejs',
     '!' + dir.src.ejs + '/**/_*.ejs'
   ])
+  .pipe(plumber())
   .pipe(ejs(
     {
       version: '4.2.0',
