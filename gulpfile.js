@@ -22,7 +22,7 @@ var plumber      = require('gulp-plumber');
 
 var dir = {
   src: {
-    css   : 'src/stylus',
+    css   : 'src/css',
     js    : 'src/js',
     images: 'src/images',
     ejs   : 'src/ejs'
@@ -79,7 +79,8 @@ gulp.task('css', function() {
     )
     .pipe(plumber())
     .pipe(stylus({
-      'resolve url nocheck': true
+      'resolve url': true,
+      include: 'node_modules/normalize-styl'
     }))
     .pipe(postcss([
       autoprefixer({
@@ -160,11 +161,10 @@ gulp.task('zip', ['build'], function(){
         '**',
         '.gitignore',
         '.editorconfig',
-        '!./.travis.yml',
-        '!./node_modules',
-        '!./node_modules/**',
-        '!./bin',
-        '!./bin/**',
+        '!node_modules',
+        '!node_modules/**',
+        '!bin',
+        '!bin/**',
         '!integrity.zip'
       ]
       , {base: '.'}
