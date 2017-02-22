@@ -97,7 +97,7 @@ gulp.task('css', function() {
 /**
  * Build images
  */
-gulp.task('copy-images',['remove-images'], function() {
+gulp.task('copy-images', ['remove-images'], function() {
   return gulp.src(dir.src.images + '/**/*')
     .pipe(gulp.dest(dir.dist.images));
 });
@@ -105,6 +105,14 @@ gulp.task('copy-images',['remove-images'], function() {
 gulp.task('remove-images', function(cb) {
   rimraf(dir.dist.images, cb);
 });
+
+/**
+ * Font
+ */
+ gulp.task('font', function() {
+   return gulp.src('./node_modules/getbasis/src/font/**')
+     .pipe(gulp.dest('./public/assets/font'));
+ });
 
 /**
  * EJS to HTML
@@ -116,13 +124,8 @@ gulp.task('ejs', function() {
   ])
   .pipe(plumber())
   .pipe(ejs(
-    {
-      version: '4.2.0',
-      css    : '/assets/css',
-      js     : '/assets/js',
-      images : '/assets/images',
-      is_front_page: false
-    },
+    {},
+    {},
     {ext: '.html'})
   )
   .pipe(gulp.dest(dir.dist.ejs));
@@ -173,6 +176,6 @@ gulp.task('zip', ['build'], function(){
     .pipe(gulp.dest('./'));
 });
 
-gulp.task('build', ['css', 'js', 'ejs', 'copy-images']);
+gulp.task('build', ['css', 'js', 'ejs', 'copy-images', 'font']);
 
 gulp.task('default', ['build', 'browsersync', 'watch']);
