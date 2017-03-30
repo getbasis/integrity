@@ -1,5 +1,5 @@
 /*
- * Name: Basis v6.1.2
+ * Name: Basis v6.4.0
  * Description: A lightweight responsive Stylus/CSS framework based on flexible box.
  * Author: Takashi Kitajima ( inc2734 )
  * Author URL: http://2inc.org
@@ -8,8 +8,8 @@
  */
 @font-face {
   font-family: 'basis';
-  src: url("../font/basis.eot");
-  src: url("../font/basis.eot#iefix") format('embedded-opentype'), url("../font/basis.ttf") format('truetype'), url("../font/basis.woff") format('woff'), url("../font/basis.svg#basis") format('svg');
+  src: url("../font/basis/basis.eot");
+  src: url("../font/basis/basis.eot#iefix") format('embedded-opentype'), url("../font/basis/basis.ttf") format('truetype'), url("../font/basis/basis.woff") format('woff'), url("../font/basis/basis.svg#basis") format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -256,10 +256,10 @@ dl,
 table,
 pre,
 blockquote {
-  margin: 0 0 0;
+  margin: 0 0 1.75rem;
 }
 figure {
-  margin: 0 0 0;
+  margin: 0 0 1.75rem;
 }
 h1,
 h2,
@@ -274,42 +274,42 @@ h1 {
   font-size: 1rem;
   line-height: 1.75;
   margin-top: 0;
-  margin-bottom: 0;
+  margin-bottom: 1.75rem;
 }
 h2 {
   font-size: 32px;
   font-size: 2rem;
   line-height: 1.28125;
-  margin-top: 0;
-  margin-bottom: 0;
+  margin-top: 3.5rem;
+  margin-bottom: 1.75rem;
 }
 h3 {
   font-size: 28px;
   font-size: 1.75rem;
   line-height: 1.428571428571429;
-  margin-top: 0;
-  margin-bottom: 0;
+  margin-top: 2.625rem;
+  margin-bottom: 1.75rem;
 }
 h4 {
   font-size: 24px;
   font-size: 1.5rem;
   line-height: 1.5;
-  margin-top: 0;
-  margin-bottom: 0;
+  margin-top: 2.1875rem;
+  margin-bottom: 1.75rem;
 }
 h5 {
   font-size: 20px;
   font-size: 1.25rem;
   line-height: 1.6;
-  margin-top: 0;
-  margin-bottom: 0;
+  margin-top: 1.75rem;
+  margin-bottom: 0.875rem;
 }
 h6 {
   font-size: 20px;
   font-size: 1.25rem;
   line-height: 1.6;
-  margin-top: 0;
-  margin-bottom: 0;
+  margin-top: 1.75rem;
+  margin-bottom: 0.875rem;
 }
 ol ol,
 ol ul,
@@ -362,15 +362,15 @@ label {
   display: block;
   background-color: #fff;
   border: 1px solid #ccc;
+  padding: 1.3125rem;
   border-radius: 3px;
-  padding: 1rem;
 }
 ._c-balloon-top {
   position: relative;
   background-color: #fff;
   border: 1px solid #ccc;
-  border-radius: 3px;
   padding: 1.3125rem;
+  border-radius: 3px;
 }
 ._c-balloon-top::before,
 ._c-balloon-top::after {
@@ -402,8 +402,8 @@ label {
   position: relative;
   background-color: #fff;
   border: 1px solid #ccc;
-  border-radius: 3px;
   padding: 1.3125rem;
+  border-radius: 3px;
 }
 ._c-balloon-right::before,
 ._c-balloon-right::after {
@@ -435,8 +435,8 @@ label {
   position: relative;
   background-color: #fff;
   border: 1px solid #ccc;
-  border-radius: 3px;
   padding: 1.3125rem;
+  border-radius: 3px;
 }
 ._c-balloon-bottom::before,
 ._c-balloon-bottom::after {
@@ -468,8 +468,8 @@ label {
   position: relative;
   background-color: #fff;
   border: 1px solid #ccc;
-  border-radius: 3px;
   padding: 1.3125rem;
+  border-radius: 3px;
 }
 ._c-balloon-left::before,
 ._c-balloon-left::after {
@@ -529,8 +529,8 @@ label {
   white-space: nowrap;
   background-color: #fff;
   border: 1px solid #ccc;
+  padding: 0.875rem 1.75rem;
   color: #333;
-  padding: 0.5rem 2rem;
 }
 ._c-btn--block {
   display: block;
@@ -546,8 +546,8 @@ label {
   display: flex;
   -ms-flex-direction: column;
   flex-direction: column;
-  box-shadow: 0 1px 2px 1px rgba(0,0,0,0.1), 0 1px 1px 0 rgba(0,0,0,0.05);
   background-color: #fff;
+  box-shadow: 0 1px 2px 1px rgba(0,0,0,0.1), 0 1px 1px 0 rgba(0,0,0,0.05);
 }
 ._c-card__figure > img,
 .p-vertical-media__figure > img {
@@ -558,10 +558,7 @@ label {
 .p-vertical-media__body {
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
-}
-._c-card__body,
-.p-vertical-media__body {
-  padding: 0.875rem 1.3125rem;
+  padding: 1.3125rem;
 }
 ._c-card__action,
 .p-vertical-media__action {
@@ -1029,6 +1026,7 @@ textarea._c-input-group__field > input[type='url'] {
   vertical-align: middle;
   white-space: nowrap;
   background-color: #fff;
+  padding: 0.875rem 1.75rem;
   border: 1px solid #ccc;
   border-radius: 3px;
   outline: 0;
@@ -1210,6 +1208,13 @@ textarea._c-input-group__field > input[type='url'] {
 }
 ._c-page-header__title {
   margin: 0;
+}
+._c-pagination__item,
+._c-pagination__item-link,
+._c-pagination__item-ellipsis {
+  display: inline-block;
+  line-height: 1;
+  text-decoration: none;
 }
 ._c-radio {
   z-index: 1;
@@ -3312,6 +3317,10 @@ a {
   transition: background-color 0.1s ease-out, color 0.1s ease-out;
   color: #3a7777;
 }
+blockquote > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
 blockquote > * + * {
   margin-top: 0.875rem;
 }
@@ -3491,6 +3500,10 @@ label + label {
   margin: 0.875rem 0 0;
   color: #999;
 }
+._c-entry__content > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
 ._c-entry__content > * + * {
   margin-top: 1.75rem;
 }
@@ -3584,6 +3597,44 @@ label + label {
   font-size: 2rem;
   line-height: 1.28125;
 }
+._c-pagination {
+  text-align: center;
+  font-size: 0;
+}
+._c-pagination__item,
+._c-pagination__item-link,
+._c-pagination__item-ellipsis {
+  margin: 0 3px;
+  display: inline-block;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 30px;
+  width: 30px;
+  font-size: 14px;
+  font-size: 0.875rem;
+  line-height: 1;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+._c-pagination__item-link {
+  background-color: #eee;
+  color: #999;
+  transition: all 0.1s ease-out;
+  text-decoration: none;
+}
+._c-pagination__item-ellipsis {
+  background-color: #eee;
+  color: #999;
+}
+._c-pagination [aria-current="page"] {
+  background-color: #666;
+  color: #fff;
+}
+* + ._c-pagination {
+  margin-top: 1.75rem;
+}
 ._c-radio {
   vertical-align: text-bottom;
 }
@@ -3602,6 +3653,10 @@ label + label {
   font-size: 2rem;
   line-height: 1.28125;
   text-align: center;
+}
+._c-section__content > * {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 ._c-section__content > * + * {
   margin-top: 1.75rem;
@@ -3725,31 +3780,6 @@ html[data-scrolled="false"] ._l-header[data-l-header-type="overlay"] ._c-hamburg
 }
 html[data-scrolled="false"] ._l-header[data-l-header-type="overlay"] ._c-hamburger-btn[aria-expanded="true"] ._c-hamburger-btn__bar:nth-child(2) {
   background-color: transparent !important;
-}
-.c-pagination {
-  text-align: center;
-}
-.c-pagination__item {
-  display: inline-block;
-  font-size: 14px;
-  font-size: 0.875rem;
-  line-height: 1;
-  padding: 8px 10px;
-  text-decoration: none;
-  background-color: #eee;
-  color: #999;
-}
-.c-pagination [aria-current="true"] {
-  background-color: #666;
-  color: #fff;
-}
-.c-pagination a.c-pagination__item {
-  transition: all 0.1s ease-out;
-}
-.c-pagination a.c-pagination__item:hover,
-.c-pagination a.c-pagination__item:focus {
-  background-color: #666;
-  color: #fff;
 }
 .p-footer-nav {
   font-size: 14px;
